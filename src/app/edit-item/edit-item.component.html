@@ -11,5 +11,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button color="warn" aria-label="cancelar edição"  (click)="onNoClick()">Cancelar</button>
-  <button mat-button color="primary" (click)="editList()" aria-label="Editar" cdkFocusInitial >Editar</button>
+  <button mat-button color="primary" [disabled]="!form.value.title" (click)="editList()" aria-label="Editar" cdkFocusInitial >Editar</button>
 </div>

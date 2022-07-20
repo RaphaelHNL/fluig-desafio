@@ -1,0 +1,31 @@
+{
+  "lists": [
+    {
+      "title": "Mercado",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Trabalho"
+    },
+    {
+      "title": "Jogos",
+      "listId": null,
+      "id": 3
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Comprar god of war",
+      "listId": 3,
+      "taskConclusion": false,
+      "id": 15
+    },
+    {
+      "title": "Feijão carioca",
+      "listId": 1,
+      "taskConclusion": true,
+      "id": 16
+    }
+  ]
+}

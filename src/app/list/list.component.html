@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-toolbar color="primary">
+          <h1>Lista de tarefa</h1>
+    </mat-toolbar>
+    <div *ngIf="!errorMessage">
+        <button mat-button color="primary" (click)="addNewItemDialog('lists')" aria-label="adicionar uma nova lista">Adicione uma nova lista <mat-icon>library_add</mat-icon></button>
+        <div *ngFor="let list of allLists" class="container-card">
+            <mat-card>
+                <mat-card-title>{{list.title}}</mat-card-title>
+                <button mat-button color="primary" (click)="addNewItemDialog('tasks', list.id)" aria-label="adicionar uma nova tarefa">Adione uma nova tarefa <mat-icon>library_add</mat-icon></button>
+                <button mat-button (click)="editItemDialog('lists', list.id, list.title)" aria-label="editar lista">Editar lista <mat-icon>edit</mat-icon></button>
+                <button mat-button color="warn" (click)="deleteItem('lists', list.id)" aria-label="deletar lista">Deletar lista <mat-icon>delete_forever</mat-icon></button>
+                <mat-card-content>
+                    <div *ngFor="let task of list.tasks">
+                        <mat-card>
+                            <div class="task-container">
+                                <mat-card-title>{{task.title}}</mat-card-title>
+                                <button mat-button (click)="editItemDialog('tasks', task.id, task.title, task.listId, task.taskConclusion)" aria-label="editar tarefa">Editar tarefa <mat-icon>edit</mat-icon></button>
+                                <mat-slide-toggle [(ngModel)]="task.taskConclusion" (click)="taskConclusion(task)" [aria-label]="task.taskConclusion === false ? 'Tarefa não finalizada' : 'Tarefa finalizada'">{{task.taskConclusion === false ? 'Tarefa não finalizada' : 'Tarefa finalizada'}}</mat-slide-toggle>
+                                <button mat-button color="warn" (click)="deleteItem('tasks', task.id)" aria-label="deletar tarefa">Deletar tarefa <mat-icon>delete_forever</mat-icon></button>
+                            </div>
+                        </mat-card>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div *ngIf="errorMessage">
+        <h2>Ocorreu um erro com o servidor, tente mais tarde!</h2>
+    </div>
+</div>
